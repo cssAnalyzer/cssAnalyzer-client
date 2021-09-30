@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import errorSlice from "../features/errorSlice";
+import dataSlice from "../features/dataSlice";
 
 export const store = configureStore({
   reducer: {
-    error: errorSlice,
+    data: dataSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
