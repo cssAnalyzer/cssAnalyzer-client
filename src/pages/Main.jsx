@@ -1,0 +1,44 @@
+import React, { useState } from "react";
+import SearchBox from "../components/SearchBox";
+import styled from "styled-components";
+import getSearchResult from "../api/search";
+
+const Wrapper = styled.div`
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LogoImg = styled.img`
+  display: absolute;
+  height: 16%;
+  width: 30%;
+  margin-top: 1rem;
+`;
+
+function Main() {
+  const handleSearchBox = async function (inputUrl) {
+    await getSearchResult(inputUrl);
+  };
+
+  return (
+    <>
+      <Wrapper>
+        <LogoImg src="/logo.png" />
+        <SearchBox
+          onSubmit={handleSearchBox}
+        />
+      </Wrapper>
+    </>
+  );
+}
+
+export default Main;
