@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getSearchResult } from "../api/search";
+import getSearchResult from "../api/search";
 
 const initialState = {
   inputUrl: "",
