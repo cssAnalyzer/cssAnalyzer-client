@@ -3,7 +3,7 @@ import reset from "styled-reset";
 import FONTS from "../constants/fontUrl";
 
 const GlobalStyle = createGlobalStyle`
-  ${reset};
+  ${reset}
 
   html, body {
     width: 100%;
