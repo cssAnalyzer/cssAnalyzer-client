@@ -22,23 +22,23 @@ function SearchBox({
     setInputUrl(target.value);
   };
 
-  const handleSubmitBtn = async function () {
-    await onSubmit({ inputUrl });
+  const handleSubmitBtn = async function (event) {
+    event.preventDefault();
+    await onSubmit(inputUrl);
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmitBtn}>
       <Input
         type="text"
         className="search"
-        autofocus="autoFocus"
+        autoFocus="autoFocus"
         value={inputUrl}
         onChange={handleChange}
       />
       <button
         display="none"
-        type="button"
-        onClick={handleSubmitBtn}
+        type="submit"
       />
     </form>
   );

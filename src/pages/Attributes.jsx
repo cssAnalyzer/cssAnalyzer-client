@@ -1,8 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import SearchBox from "../components/SearchBox";
 import styled from "styled-components";
-import postSearchResult from "../api/search";
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,27 +22,15 @@ const LogoImg = styled.img`
   margin-top: 1rem;
 `;
 
-function Main() {
-  const history = useHistory();
-
-  const handleSearchBox = async function (inputUrl) {
-    const data = await postSearchResult("/", inputUrl);
-    history.push({
-      pathname: "/attributes",
-      data,
-    });
-  };
-
+function Attributes() {
   return (
     <>
       <Wrapper>
         <LogoImg src="/logo.png" />
-        <SearchBox
-          onSubmit={handleSearchBox}
-        />
+        <p>여기는 Attributes 페이지입니다.</p>
       </Wrapper>
     </>
   );
 }
 
-export default Main;
+export default Attributes;
