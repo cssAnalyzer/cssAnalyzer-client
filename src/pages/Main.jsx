@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
 import styled from "styled-components";
-import getSearchResult from "../api/search";
+import postSearchResult from "../api/search";
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,8 +26,14 @@ const LogoImg = styled.img`
 `;
 
 function Main() {
+  const history = useHistory();
+
   const handleSearchBox = async function (inputUrl) {
-    await getSearchResult(inputUrl);
+    const data = await postSearchResult("/", inputUrl);
+    history.push({
+      pathname: "/attributes",
+      data,
+    });
   };
 
   return (
