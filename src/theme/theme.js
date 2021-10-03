@@ -19,9 +19,9 @@ const fontSizes = {
 
 const colors = {
   PURPLE: "#990FBF",
-  YELLOW: "FFE600",
-  BLACK: "000000",
-  WHITE: "FFFFFF",
+  YELLOW: "#FFE600",
+  BLACK: "#000000",
+  WHITE: "#FFFFFF",
 };
 
 const theme = {
