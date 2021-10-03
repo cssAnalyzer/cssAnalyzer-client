@@ -29,7 +29,7 @@ function Main() {
   const history = useHistory();
 
   const handleSearchBox = async function (inputUrl) {
-    const data = await postSearchResult("/", inputUrl);
+    const data = await postSearchResult("/attributes", inputUrl);
     history.push({
       pathname: "/attributes",
       data,
