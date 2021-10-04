@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -85,14 +85,15 @@ function Menu() {
           <NavLink to="/">
             <LogoImg src="/logo.png" />
           </NavLink>
-          <SearchBox
-            onSubmit={handleSearchBox}
-          />
+          <SearchBox onSubmit={handleSearchBox} />
         </SearchBoxLogoWrapper>
         <MenuBarSt>
           {menuItems.map((menu) => {
             return (
-              <MenuNavLink to={`/${menu}`} key={`/${menu}`}>
+              <MenuNavLink
+                to={`/${menu}`}
+                key={`/${menu}`}
+              >
                 <MenuButton
                   menuName={menu}
                   isActive={pathname === `/${menu}`}
