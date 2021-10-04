@@ -19,19 +19,16 @@ const MenuItem = styled.div`
 function MenuButton({
   menuName,
   isActive,
-  handleClick,
 }) {
   return isActive ? (
     <MenuItem
       className="active"
-      onClick={handleClick}
       key={menuName}
     >
       {menuName}
     </MenuItem>
   ) : (
     <MenuItem
-      onClick={handleClick}
       key={menuName}>
       {menuName}
     </MenuItem>
@@ -40,7 +37,6 @@ function MenuButton({
 
 MenuButton.propTypes = {
   menuName: PropTypes.string,
-  handleClick: PropTypes.func,
   isActive: PropTypes.bool,
 };
 
