@@ -15,7 +15,6 @@ const Wrapper = styled.div`
 `;
 
 function Attributes() {
-  const { pathname } = useLocation();
   const [groupView, setGroupView] = useState("all");
 
   const handleClick = ({ target }) => {
@@ -38,7 +37,9 @@ function Attributes() {
           data={data}
           option={groupView}
         />
-        <GroupSelector />
+        <GroupSelector
+          handleClick={handleClick}
+        />
       </Wrapper>
     </>
   );
