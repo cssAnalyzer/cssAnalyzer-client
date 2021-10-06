@@ -38,6 +38,7 @@ function SearchBox({
       />
       <button
         display="none"
+        visibility="hidden"
         type="submit"
       />
     </form>
