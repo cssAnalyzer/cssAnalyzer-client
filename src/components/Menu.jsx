@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUrl } from "../features/dataSlice";
 
 import MenuButton from "./MenuButton";
 import SearchBox from "./SearchBox";
-import postSearchResult from "../api/search";
+import getSearchResult from "../api/search";
 
 const MenuBarSt = styled.div`
   z-index: 1;
@@ -65,6 +67,8 @@ const LogoImg = styled.img`
 
 function Menu() {
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const inputUrl = useSelector(state => state.data.inputUrl);
 
   const menuItems = [
     "Attributes",
@@ -73,9 +77,10 @@ function Menu() {
     "Color",
   ];
 
-  const handleSearchBox = async function (inputUrl) {
-    const data = await postSearchResult(pathname, inputUrl);
-    history.push({ pathname, data });
+  const handleSearchBox = (inputUrl) => {
+    dispatch(setUrl(inputUrl));
+
+    history.push(pathname);
   };
 
   return (

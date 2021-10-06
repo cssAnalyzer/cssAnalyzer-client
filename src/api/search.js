@@ -3,14 +3,16 @@ import axios from "axios";
 const serverURL = process.env.LOCAL_SERVER_URI;
 const axiosInstance = axios.create({ serverURL });
 
-async function postSearchResult(page, inputUrl) {
-  const res = await axiosInstance.post(page, inputUrl);
+async function getSearchResult(page, inputUrl) {
+  const res = await axiosInstance.get(page, {
+    params: { inputUrl },
+  });
 
   if (res) {
     const { data } = res;
 
-    return { data };
+    return data;
   }
 }
 
-export default postSearchResult;
+export default getSearchResult;

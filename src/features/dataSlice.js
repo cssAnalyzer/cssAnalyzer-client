@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import getSearchResult from "../api/search";
 
 const initialState = {
-  inputUrl: "",
+  inputUrl: "http://www.google.com",
   searchResult: {},
 };
 
 const search = createAsyncThunk("search",
-  async function ({ inputUrl }) {
+  async function (inputUrl) {
     try {
-      const { searchResult } = await getSearchResult();
+      const { searchResult } = await getSearchResult(inputUrl);
 
       return {
         searchResult,
@@ -24,7 +24,7 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     setUrl(state, { payload }) {
-      const { inputUrl } = payload;
+      const inputUrl = payload;
 
       if (inputUrl) {
         state.inputUrl = inputUrl;
@@ -33,7 +33,7 @@ const dataSlice = createSlice({
       }
     },
     setSearchResult(state, { payload }) {
-      const { searchResult } = payload;
+      const searchResult = payload;
       state.searchResult = searchResult;
     },
   },

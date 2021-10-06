@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { Provider as ReduxProvider } from "react-redux"
 
 import GlobalStyle from "./theme/global";
-import theme from "./theme/theme";
-
+import theme from "./theme/theme"
 import Menu from "./components/Menu";
 import Main from "./pages/Main";
 import Attributes from "./pages/Attributes";

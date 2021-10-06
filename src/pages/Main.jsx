@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUrl } from "../features/dataSlice";
 import SearchBox from "../components/SearchBox";
 import styled from "styled-components";
-import postSearchResult from "../api/search";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,19 +28,20 @@ const LogoImg = styled.img`
 
 function Main() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const inputUrl = useSelector(state => state.data.inputUrl);
 
-  const handleSearchBox = async function (inputUrl) {
-    const data = await postSearchResult("/attributes", inputUrl);
-    history.push({
-      pathname: "/attributes",
-      data,
-    });
+  const handleSearchBox = (inputUrl) => {
+    dispatch(setUrl(inputUrl));
+
+    history.push("/attributes");
   };
 
   return (
     <>
       <Wrapper>
         <LogoImg src="/logo.png" />
+        <div>{inputUrl}</div>
         <SearchBox
           onSubmit={handleSearchBox}
         />
