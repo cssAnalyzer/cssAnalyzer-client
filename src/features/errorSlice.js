@@ -1,27 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  code: 200,
-  comment: "",
+  hasError: false,
+  statusCode: 200,
+  message: "",
 };
 
 const errorSlice = createSlice({
   name: "error",
   initialState,
   reducers: {
-    setError(state, { payload }) {
-      const { code, comment } = payload;
-
-      if (code !== 200) {
-        state.code = code;
-        state.comment = comment;
-      } else {
-        state.code = 200;
-        state.comment = "";
-      }
+    setError(state, action) {
+      state.hasError = true;
+      state.statusCode = action.payload.statusCode;
+      state.message = action.payload.message;
+    },
+    removeError(state) {
+      state.hasError = false;
+      state.statusCode = 200;
+      state.message = "";
     },
   },
 });
 
-export const { setError } = errorSlice.actions;
+export const { setError, removeError } = errorSlice.actions;
 export default errorSlice.reducer;
