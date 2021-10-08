@@ -1,10 +1,7 @@
-import axios from "axios";
-
-const serverURL = process.env.LOCAL_SERVER_URI;
-const axiosInstance = axios.create({ serverURL });
+import instance from "./error";
 
 async function getSearchResult(page, inputUrl) {
-  const res = await axiosInstance.get(page, {
+  const res = await instance.get(page, {
     params: { inputUrl },
   });
 

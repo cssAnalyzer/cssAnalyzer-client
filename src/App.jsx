@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { Provider as ReduxProvider } from "react-redux"
+import { useSelector } from "react-redux";
 
 import GlobalStyle from "./theme/global";
 import theme from "./theme/theme"
@@ -11,10 +11,14 @@ import Attributes from "./pages/Attributes";
 import Browser from "./pages/Browser";
 import Color from "./pages/Color";
 import Tags from "./pages/Tags";
+import Error from "./components/Error";
 
 function App() {
+  const { hasError, ...error } = useSelector((state) => state.error);
+
   return (
     <ThemeProvider theme={theme}>
+      {hasError && <Error {...error} /> }
       <GlobalStyle />
       <Menu />
       <Switch>
