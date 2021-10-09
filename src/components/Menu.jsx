@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUrl } from "../features/dataSlice";
 
 import MenuButton from "./MenuButton";
 import SearchBox from "./SearchBox";
-import getSearchResult from "../api/search";
 
 const MenuBarSt = styled.div`
   z-index: 1;
@@ -15,7 +14,6 @@ const MenuBarSt = styled.div`
   flex-direction: row;
   justify-items: center;
   align-items: center;
-  flex-direction: row;
   justify-content: space-around;
   position: fixed;
   background-color: ${({ theme }) => theme.colors.WHITE};
@@ -68,7 +66,8 @@ const LogoImg = styled.img`
 function Menu() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  const inputUrl = useSelector(state => state.data.inputUrl);
+  const history = useHistory();
+  const nowPath = pathname;
 
   const menuItems = [
     "Attributes",
@@ -77,10 +76,12 @@ function Menu() {
     "Color",
   ];
 
-  const handleSearchBox = (inputUrl) => {
-    dispatch(setUrl(inputUrl));
+  const handleSearchBox = (url) => {
+    dispatch(setUrl(url));
 
-    history.push(pathname);
+    (nowPath === pathname)
+      ? window.location.replace(pathname)
+      : history.push(pathname);
   };
 
   return (
