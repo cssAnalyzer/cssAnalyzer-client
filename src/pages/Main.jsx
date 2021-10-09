@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUrl } from "../features/dataSlice";
@@ -31,8 +31,8 @@ function Main() {
   const dispatch = useDispatch();
   const inputUrl = useSelector(state => state.data.inputUrl);
 
-  const handleSearchBox = (inputUrl) => {
-    dispatch(setUrl(inputUrl));
+  const handleSearchBox = (url) => {
+    dispatch(setUrl(url));
 
     history.push("/attributes");
   };
