@@ -12,6 +12,7 @@ import Browser from "./pages/Browser";
 import Color from "./pages/Color";
 import Tags from "./pages/Tags";
 import Error from "./components/Error";
+import Loading from "./components/graph/Loading";
 
 function App() {
   const { hasError, ...error } = useSelector((state) => state.error);
