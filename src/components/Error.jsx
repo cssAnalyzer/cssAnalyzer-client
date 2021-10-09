@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
-
 import { removeError } from "../features/errorSlice";
 
 const ErrorWrapper = styled.div`
@@ -14,9 +12,9 @@ const ErrorWrapper = styled.div`
   z-index: 1;
   justify-content: center;
   align-items: center;
-  margin-top: 200px;
+  margin-top: ${ (props) => (props.isMain === "/") ? "0px" : "220px" };
   width: 100%;
-  height: 100px;
+  height: 80px;
 `;
 
 const InnerMsg = styled.div`
@@ -39,15 +37,14 @@ const CloseButton = styled.div`
   width: 50px;
   height: 50px;
   font-size: 2rem;
+  cursor: pointer;
 `;
 
-function Error({ statusCode, message }) {
+function Error({ statusCode, message, isMain }) {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleConfirm = function () {
     dispatch(removeError());
-    history.goBack();
   };
 
   return (
@@ -69,6 +66,7 @@ function Error({ statusCode, message }) {
 Error.propTypes = {
   statusCode: PropTypes.number,
   message: PropTypes.string,
+  isMain: PropTypes.string,
 };
 
 export default Error;
