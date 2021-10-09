@@ -1,10 +1,10 @@
 import axios from "axios";
-import store from "../app/store";
+import { store } from "../app/store";
 import STATUS from "../constants/status";
 import { setError } from "../features/errorSlice";
 
-function handleRequestError(err) {
-  return Promise.reject(err);
+function parseResponseData(response) {
+  return response.data;
 }
 
 function handleResponseError(err) {
@@ -21,10 +21,9 @@ function handleResponseError(err) {
   store.dispatch(setError(error));
 }
 
-const serverURL = process.env.LOCAL_SERVER_URI;
+const serverURL = process.env.REACT_APP_LOCAL_SERVER_URI;
 const instance = axios.create({ serverURL });
 
-instance.interceptors.request.use(handleRequestError);
-instance.interceptors.response.use(handleResponseError);
+instance.interceptors.response.use(parseResponseData, handleResponseError);
 
 export default instance;
