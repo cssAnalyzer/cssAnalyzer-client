@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUrl } from "../features/dataSlice";
-
 import MenuButton from "./MenuButton";
 import SearchBox from "./SearchBox";
 
@@ -58,9 +57,9 @@ const MenuNavLink = styled(NavLink)`
 const LogoImg = styled.img`
   z-index: 1;
   display: flex;
-  height: 150px;
-  width: 450px;
-  margin: 1rem 5rem auto;
+  width: calc(40vw + 1px);
+  height: auto !important;
+  margin: auto 3rem auto;
 `;
 
 function Menu() {
@@ -72,7 +71,7 @@ function Menu() {
   const menuItems = [
     "Attributes",
     "Tags",
-    "Browser",
+    "Compatibility",
     "Color",
   ];
 
