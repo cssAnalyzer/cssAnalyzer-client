@@ -1,4 +1,4 @@
-import instance from "./axiosInstance";
+import instance from "./errorHandlers";
 
 async function getSearchResult(page, inputUrl) {
   const res = await instance.get(page, {
