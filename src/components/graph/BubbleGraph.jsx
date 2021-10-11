@@ -3,45 +3,66 @@ import styled from "styled-components";
 import * as d3 from "d3";
 import PropTypes from "prop-types";
 
-const Canvas = styled.svg`
-  margin: 0 auto 0 auto;
+const SvgWrapper = styled.g`
   position: relative;
   text-align: center;
-  width: 80%;
-  height: 70%;
-  border: solid 3px black;
-  z-index: -1;
+  width: 100%;
+  height: 65%;
 `;
 
-const width = 1000;
-const height = 800;
+const Text = styled.text`
+  position: relative;
+  justify-content: center;
+  top: 4rem;
+  font-size: 50px;
+`;
 
-function BubbleGraph({ inputData, option }) {
+const Canvas = styled.svg`
+  position: relative;
+  top: -3rem;
+  width: 100%;
+  height: 120%;
+`;
+
+const width = Number(window.innerWidth || document.body.clientWidth);
+const height = Number(window.innerHeight || document.body.clientHeight);
+
+function BubbleGraph({ data, title, option }) {
   const svgRef = useRef();
   const svg = d3.select(svgRef.current);
-  const circleColor = (option === "/Attributes") ? "orange" : "green";
+  const circleColor = (option === "/attributes") ? "orange" : "green";
 
   useEffect(() => {
     svg.selectAll("g").remove();
-    const data = inputData;
-
     const scaleRadius = d3.scaleLinear()
       .domain([d3.min(data, d => d.radius), d3.max(data, d => d.radius)])
       .range([10, 100]);
 
-    const circles = svg
-      .append("g")
+    const node = svg
       .selectAll("g")
       .data(data, d => d.name)
       .enter()
-      .append("circle")
+      .append("g")
+      .attr("id", d => d.name)
+      .style("cursor", "pointer")
+      .attr("transform", "translate(" + [width / 2, height / 2.7] + ")")
+
+    const circle = node.append("circle")
       .attr("r", d => scaleRadius(d.radius))
-      .attr("transform", "translate(" + [width / 2, height / 2] + ")")
+      .attr("xlink:href", d => "https://developer.mozilla.org/ko/search?q=" + d.name)
       .attr("fill", circleColor)
       .attr("visibility", "visible")
       .attr("display", "block")
       .attr("stroke", circleColor)
       .style("opacity", 0.8);
+
+    const names = node.append("text")
+      .html(d => d.name)
+      .attr("text-anchor", "middle")
+      .attr("font-size", d => `${scaleRadius(d.radius)}px`)
+      .attr("visibility", "visible")
+      .attr("color", "black")
+      .style("pointer-events", "none");
 
     const tooltip = svg
       .append("g")
@@ -49,59 +70,68 @@ function BubbleGraph({ inputData, option }) {
       .append("rect")
       .attr("class", "tooltip")
       .attr("fill", "white")
-      .attr("width", "100px")
-      .attr("height", "50px")
       .attr("text-align", "center")
       .style("opacity", 0);
 
-    circles.on("mouseover", (event, d) => {
+    node.on("mouseover", (event, d) => {
       const [x, y] = d3.pointer(event);
 
       tooltip.style("opacity", 0.8)
         .attr("stroke", "orange")
+        .attr("width", "100px")
+        .attr("height", "50px")
         .style("visibility", "visible")
-        .attr("transform", `translate(${x + width / 2}, ${y + height / 2})`);
+        .attr("transform", `translate(${x + width / 2}, ${y + height / 2.7})`);
 
       d3.select("#tooltipGroup")
         .append("text")
         .attr("id", "tooltipText")
         .attr("color", "black")
-        .attr("transform", `translate(${(x + width / 2) + 20}, ${(y + height / 2) + 30})`)
-        .html(`${d.name}<br>${d.radius}`);
+        .attr("transform", `translate(${(x + width / 2) + 20}, ${(y + height / 2.7) + 30})`)
+        .html(`total: ${d.radius}`);
     })
-      .on("mouseout", () => {
+      .on("mouseout", (event, d) => {
         tooltip.style("opacity", 0)
           .style("visibility", "hidden");
 
         d3.select("#tooltipText").remove();
+      })
+      .on("click", (event, d) => {
+        const link = `https://developer.mozilla.org/ko/search?q=${d.name}`;
+        window.location.href = link;
       });
 
     const tickNode = () => {
-      circles
+      circle
         .attr("cx", d => d.x)
         .attr("cy", d => d.y);
+      names
+        .attr("x", d => d.x)
+        .attr("y", d => d.y);
     }
 
     const simulation = d3.forceSimulation(data)
       .force("charge", d3.forceManyBody()
-        .strength(d => -(scaleRadius(d.radius) * 7 )))
+        .strength(d => - (scaleRadius(d.radius) * 7 )))
       .force("x", d3.forceX())
       .force("y", d3.forceY())
       .velocityDecay(0.1)
-      .force("collide", d3.forceCollide(d => scaleRadius(d.radius) + 5));
+      .force("collide", d3.forceCollide(d => scaleRadius(d.radius) + 10));
 
     simulation.nodes(data).on("tick", tickNode);
-  }, [inputData]);
+  }, [data]);
 
   return (
-    <>
-      <Canvas ref={svgRef}></Canvas>
-    </>
+    <SvgWrapper class="group">
+      <Text>{title}</Text>
+      <Canvas ref={svgRef} />
+    </SvgWrapper>
   );
 }
 
 BubbleGraph.propTypes = {
-  inputData: PropTypes.array,
+  data: PropTypes.array,
+  title: PropTypes.string,
   option: PropTypes.string,
 };
 
