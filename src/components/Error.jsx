@@ -12,7 +12,7 @@ const ErrorWrapper = styled.div`
   z-index: 1;
   justify-content: center;
   align-items: center;
-  margin-top: ${ (props) => (props.isMain === "/") ? "0px" : "220px" };
+  margin-top: ${ (props) => (props.isMain === "/") ? "0px" : "200px" };
   width: 100%;
   height: 80px;
 `;
