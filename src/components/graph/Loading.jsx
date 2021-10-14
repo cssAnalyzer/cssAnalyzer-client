@@ -34,7 +34,6 @@ const Text = styled.text`
 `;
 
 function Loading({ status }) {
-  const [isShowing, setIsShowing] = useState(status);
   const svgRef = useRef();
   const svg = d3.select(svgRef.current);
 
@@ -88,7 +87,7 @@ function Loading({ status }) {
     d3.interval(() => {
       restart(nodes);
     }, 1500);
-  }, [isShowing]);
+  }, [status]);
 
   return (
     <Wrapper>
