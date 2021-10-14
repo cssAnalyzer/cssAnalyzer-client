@@ -122,7 +122,7 @@ function BubbleGraph({ data, title, option }) {
   }, [data]);
 
   return (
-    <SvgWrapper class="group">
+    <SvgWrapper className="group">
       <Text>{title}</Text>
       <Canvas ref={svgRef} />
     </SvgWrapper>
