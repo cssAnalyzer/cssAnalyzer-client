@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import * as d3 from "d3";
-import PropTypes from "prop-types";
 import randomizeData from "../../helper/randomizeData";
-import FONTS from "../../constants/fontUrl";
+import propTypes from "prop-types";
 
 const Wrapper = styled.g`
   position: fixed;
@@ -34,7 +33,7 @@ const Text = styled.text`
   left: 35%;
 `;
 
-function Loading({ isLoading }) {
+function Loading({ status }) {
   const svgRef = useRef();
   const svg = d3.select(svgRef.current);
 
@@ -85,28 +84,21 @@ function Loading({ isLoading }) {
   }
 
   useEffect(() => {
-    if (isLoading) {
-      d3.interval(() => {
-        restart(nodes);
-      }, 1800);
-    }
-  }, [isLoading]);
+    d3.interval(() => {
+      restart(nodes);
+    }, 1500);
+  }, [status]);
 
   return (
-    <>
-      {isLoading
-      && (
-        <Wrapper>
-          <Text>Loading...</Text>
-          <Canvas ref={svgRef} />
-        </Wrapper>
-      )}
-    </>
+    <Wrapper>
+      <Text>Loading...</Text>
+      <Canvas ref={svgRef} />
+    </Wrapper>
   );
 }
 
 Loading.propTypes = {
-  isLoading: PropTypes.bool,
-};
+  status: propTypes.bool,
+}
 
 export default Loading;

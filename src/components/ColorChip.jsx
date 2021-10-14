@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { useDrag } from "react-dnd"
 import styled from "styled-components";
 import PropTypes from "prop-types";
