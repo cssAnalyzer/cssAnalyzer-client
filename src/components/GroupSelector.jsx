@@ -23,7 +23,7 @@ const SelectorWrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   width: 500px;
-  height: 100px;
+  height: calc(10vh + 1px);
 `;
 
 function GroupSelector({
