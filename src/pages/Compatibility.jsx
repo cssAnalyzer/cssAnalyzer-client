@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import getSearchResult from "../api/getSearchResult";
 import PieGraph from "../components/graph/PieGraph";
-import mockPieData from "../mockPieData";
+import mockPieData from "../mockData/mockPieData";
 import Loading from "../components/graph/Loading";
 
 const Wrapper = styled.div`
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 function Compatibility() {
   const { pathname } = useLocation();
   const [searchResult, setSearchResult] = useState(mockPieData);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const inputUrl = useSelector(state => state.data.inputUrl);
 
   async function getResult(pathname, inputUrl) {
