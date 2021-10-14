@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
 
 import GlobalStyle from "./theme/global";
 import theme from "./theme/theme"
@@ -17,28 +19,30 @@ function App() {
   const { hasError, ...error } = useSelector((state) => state.error);
 
   return (
-    <ThemeProvider theme={theme}>
-      {hasError && <Error {...error} /> }
-      <GlobalStyle />
-      <Menu />
-      <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <Route exact path="/Attributes">
-          <Attributes />
-        </Route>
-        <Route exact path="/compatibility">
-          <Compatibility />
-        </Route>
-        <Route exact path="/Color">
-          <Color />
-        </Route>
-        <Route exact path="/Tags">
-          <Tags />
-        </Route>
-      </Switch>
-    </ThemeProvider>
+    <DndProvider backend={HTML5Backend}>
+      <ThemeProvider theme={theme}>
+        {hasError && <Error {...error} /> }
+        <GlobalStyle />
+        <Menu />
+        <Switch>
+          <Route exact path="/">
+            <Main />
+          </Route>
+          <Route exact path="/Attributes">
+            <Attributes />
+          </Route>
+          <Route exact path="/compatibility">
+            <Compatibility />
+          </Route>
+          <Route exact path="/Color">
+            <Color />
+          </Route>
+          <Route exact path="/Tags">
+            <Tags />
+          </Route>
+        </Switch>
+      </ThemeProvider>
+    </DndProvider>
   );
 }
 
