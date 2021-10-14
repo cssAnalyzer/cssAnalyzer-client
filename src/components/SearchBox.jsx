@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 
 const Input = styled.input`
   border: solid 6px ${({ theme }) => theme.colors.PURPLE};
-  width: 1000px;
-  height: 100px;
+  width: calc(40vw + 1px);
+  height: calc(10vh + 1px);
   font-size: 40px;
+  margin-right: 50px;
 
   :focus {
     outline: none;
@@ -46,7 +47,6 @@ function SearchBox({
 }
 
 SearchBox.propTypes = {
-  inputUrl: PropTypes.string,
   onSubmit: PropTypes.func,
 };
 
