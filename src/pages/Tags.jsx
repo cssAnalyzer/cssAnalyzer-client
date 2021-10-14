@@ -5,7 +5,7 @@ import styled from "styled-components";
 import getSearchResult from "../api/getSearchResult";
 import BubbleGraph from "../components/graph/BubbleGraph";
 import GroupSelector from "../components/GroupSelector";
-import mockData from "../mockData";
+import mockData from "../mockData/mockData";
 import Loading from "../components/graph/Loading";
 
 const Wrapper = styled.div`
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 `;
 
 function Tags() {
-  const [groupView, setGroupView] = useState("all");
+  const [groupView, setGroupView] = useState("bubble");
   const { pathname } = useLocation();
   const [searchResult, setSearchResult] = useState([mockData.filteredData]);
   const [isLoading, setIsLoading] = useState(false);
@@ -51,13 +51,13 @@ function Tags() {
       <Wrapper>
         {isLoading && <Loading />}
         <BubbleGraph
-          inputData={searchResult}
+          data={searchResult}
+          title={inputUrl}
           option={pathname}
         />
         <GroupSelector
           handleClick={handleClick}
         />
-        <div>{inputUrl}</div>
       </Wrapper>
     </>
   );
