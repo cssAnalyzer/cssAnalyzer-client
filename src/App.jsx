@@ -8,11 +8,10 @@ import theme from "./theme/theme"
 import Menu from "./components/Menu";
 import Main from "./pages/Main";
 import Attributes from "./pages/Attributes";
-import Browser from "./pages/Browser";
+import Compatibility from "./pages/Compatibility";
 import Color from "./pages/Color";
 import Tags from "./pages/Tags";
 import Error from "./components/Error";
-import Loading from "./components/graph/Loading";
 
 function App() {
   const { hasError, ...error } = useSelector((state) => state.error);
@@ -29,8 +28,8 @@ function App() {
         <Route exact path="/Attributes">
           <Attributes />
         </Route>
-        <Route exact path="/Browser">
-          <Browser />
+        <Route exact path="/compatibility">
+          <Compatibility />
         </Route>
         <Route exact path="/Color">
           <Color />
