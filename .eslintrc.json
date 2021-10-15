@@ -37,7 +37,6 @@
     "no-duplicate-imports": "error",
     "no-empty-function": "error",
     "no-lonely-if": "error",
-    "no-magic-numbers": ["error", { "ignore": [0, 1] }],
     "no-multi-spaces": "error",
     "no-multiple-empty-lines": [
       "error",
