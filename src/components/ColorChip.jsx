@@ -4,11 +4,9 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Chip = styled.div`
-  margin-top: 10%;
   position: relative;
   display: flex;
   width: 100px;
-  height: 75%;
   cursor: pointer;
 
   &:hover {
@@ -21,7 +19,7 @@ const DroppedColorChip = styled.div`
   display: flex;
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 70%;
 `;
 
 function ColorChip({ data, id, isDropped }) {

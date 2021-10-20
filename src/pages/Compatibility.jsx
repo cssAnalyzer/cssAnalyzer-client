@@ -47,7 +47,6 @@ function Compatibility() {
         {isLoading && <Loading />}
         <PieGraph
           data={searchResult}
-          title={inputUrl}
         />
       </Wrapper>
     </>
