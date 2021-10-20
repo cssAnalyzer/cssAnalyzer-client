@@ -1,23 +1,37 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Input = styled.input`
-  border: solid 6px ${({ theme }) => theme.colors.PURPLE};
-  width: calc(40vw + 1px);
-  height: calc(10vh + 1px);
-  font-size: 40px;
-  margin-right: 50px;
+  border: solid 5px ${({ theme }) => theme.colors.PURPLE};
+  width: calc(50vw + 1px);
+  height: calc(7vh + 1px);
+  font-size: 30px;
 
   :focus {
     outline: none;
   };
+
+  @media (min-width: 280px) and (max-width: 480px) {
+    {
+      border: solid 3px ${({ theme }) => theme.colors.PURPLE};
+      width: calc(70vw + 1px);
+      height: calc(5vh + 1px);
+      font-size: 20px;
+    }
+  }
+`;
+
+const InvisibleSubmit = styled.input`
+  display: none;
 `;
 
 function SearchBox({
   onSubmit,
 }) {
-  const [inputUrl, setInputUrl] = useState("");
+  const storedUrl = useSelector(state => state.data.inputUrl);
+  const [inputUrl, setInputUrl] = useState(storedUrl);
 
   const handleChange = function ({ target }) {
     setInputUrl(target.value);
@@ -37,9 +51,7 @@ function SearchBox({
         value={inputUrl}
         onChange={handleChange}
       />
-      <button
-        display="none"
-        visibility="hidden"
+      <InvisibleSubmit
         type="submit"
       />
     </form>

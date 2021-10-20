@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 const SvgWrapper = styled.g`
   position: relative;
   text-align: center;
-  width: 100%;
-  height: 65%;
+  width: calc(100vw);
+  height: calc(70vh);
 `;
 
 const Text = styled.text`
@@ -19,9 +19,8 @@ const Text = styled.text`
 
 const Canvas = styled.svg`
   position: relative;
-  top: -3rem;
-  width: 100%;
-  height: 120%;
+  width: calc(100vw);
+  height: calc(75vh);
 `;
 
 const width = Number(window.innerWidth || document.body.clientWidth);
@@ -39,13 +38,15 @@ function BubbleGraph({ data, title, option }) {
       .range([10, 100]);
 
     const node = svg
+      .attr("viewBox", "0 0 400 600")
       .selectAll("g")
       .data(data, d => d.name)
       .enter()
       .append("g")
       .attr("id", d => d.name)
       .style("cursor", "pointer")
-      .attr("transform", "translate(" + [width / 2, height / 2.7] + ")")
+      .attr("preserveAspectRatio", "xMinYMin meet")
+      .attr("transform", "translate(" + [width / 6, height / 4] + ")")
 
     const circle = node.append("circle")
       .attr("r", d => scaleRadius(d.radius))
@@ -81,13 +82,13 @@ function BubbleGraph({ data, title, option }) {
         .attr("width", "100px")
         .attr("height", "50px")
         .style("visibility", "visible")
-        .attr("transform", `translate(${x + width / 2}, ${y + height / 2.7})`);
+        .attr("transform", `translate(${x + width / 6}, ${y + height / 4})`);
 
       d3.select("#tooltipGroup")
         .append("text")
         .attr("id", "tooltipText")
         .attr("color", "black")
-        .attr("transform", `translate(${(x + width / 2) + 20}, ${(y + height / 2.7) + 30})`)
+        .attr("transform", `translate(${(x + width / 6) + 20}, ${(y + height / 4) + 30})`)
         .html(`total: ${d.radius}`);
     })
       .on("mouseout", (event, d) => {
@@ -116,7 +117,7 @@ function BubbleGraph({ data, title, option }) {
       .force("x", d3.forceX())
       .force("y", d3.forceY())
       .velocityDecay(0.1)
-      .force("collide", d3.forceCollide(d => scaleRadius(d.radius) + 10));
+      .force("collide", d3.forceCollide(d => scaleRadius(d.radius) + 5));
 
     simulation.nodes(data).on("tick", tickNode);
   }, [data]);

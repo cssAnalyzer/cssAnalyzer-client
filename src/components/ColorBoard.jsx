@@ -7,8 +7,6 @@ const UserPaletteSt = styled.div`
   position: relative;
   width: 33.3%;
   height: 55%;
-  border: solid 5px purple;
-  background-color: yellow;
   margin-top: 38%;
 `;
 

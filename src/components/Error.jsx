@@ -6,26 +6,42 @@ import { removeError } from "../features/errorSlice";
 
 const ErrorWrapper = styled.div`
   position: fixed;
+  margin-top: 15vh;
   display: flex;
   flex-direction: row;
   background-color: ${({ theme }) => theme.colors.YELLOW};
-  z-index: 1;
   justify-content: center;
   align-items: center;
-  margin-top: ${ (props) => (props.isMain === "/") ? "0px" : "200px" };
   width: 100%;
-  height: 80px;
+  height: calc(8vh);
+  color: ${({ theme }) => theme.colors.BLACK};
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    {
+      margin-top: 14vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    {
+      margin-top: 11vh;
+      height: calc(6vh);
+    }
+  }
 `;
 
 const InnerMsg = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
-  box-sizing: border-box;
-  justify-content: center;
   padding: 10px;
   font-size: 1.2rem;
+
+  @media (max-width: 480px) {
+    {
+      font-size: 1rem
+    }
+  }
 `;
 
 const CloseButton = styled.div`
@@ -33,11 +49,18 @@ const CloseButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 100px;
+  margin-right: 1vw;
   width: 50px;
   height: 50px;
   font-size: 2rem;
   cursor: pointer;
+
+  @media (max-width: 480px) {
+    {
+      font-size: 1rem;
+      margin-right: 1vw;
+    }
+  }
 `;
 
 function Error({ statusCode, message, isMain }) {

@@ -12,46 +12,60 @@ const Wrapper = styled.div`
   display: flex;
   position: fixed;
   flex-direction: column;
+  margin-top: calc(27vh);
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    {
+      margin-top: calc(27vh);
+    }
+  }
+
+  @media (max-width: 480px) {
+    {
+      margin-top: calc(26vh);
+    }
+  }
 `;
 
 const ColorChipBoard = styled.div`
   display: flex;
-  position: fixed;
+  position: relative;
   width: 100%;
-  height: 75%;
-  margin-top: -10%;
+  height: 100%;
 `;
 
 const PaletteSt = styled.div`
   display: flex;
   position: relative;
   width: 100%;
-  height: 30%;
-  border: solid 5px purple;
-  margin-top: 55%;
+  height: 100%;
 `;
 
 const DeleteZone = styled.div`
   display: flex;
   position: fixed;
   width: 100%;
-  height: 30%;
-  margin-top: 90%;
+  height: 5%;
   z-index: 1;
   background-color: crimson;
-  opacity: 0;
+  opacity: 1;
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     opacity: 1;
     border: solid 2px red;
+  }
+
+  @media (max-width: 480px) {
+    {
+      font-size: 1rem
+    }
   }
 `;
 
@@ -130,7 +144,13 @@ function Color() {
             );
           })}
         </PaletteSt>
-        {(userPalette.length > 0) && <DeleteZone ref={dropDelete} />}
+        { (userPalette.length > 0)
+          && <DeleteZone
+            ref={dropDelete}
+          >
+            Drop below color chips for delete them all :)
+          </DeleteZone>
+        }
       </Wrapper>
     </>
   );

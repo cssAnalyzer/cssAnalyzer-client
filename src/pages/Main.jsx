@@ -21,9 +21,15 @@ const Wrapper = styled.div`
 
 const LogoImg = styled.img`
   display: absolute;
-  height: 16%;
-  width: 30%;
+  width: calc(50%);
   margin-top: 1rem;
+
+  @media (min-width: 280px) and (max-width: 480px) {
+    {
+      width: calc(100%);
+      margin-bottom: 2rem;
+    }
+  }
 `;
 
 function Main() {
@@ -41,7 +47,6 @@ function Main() {
     <>
       <Wrapper>
         <LogoImg src="/logo.png" />
-        <div>{inputUrl}</div>
         <SearchBox
           onSubmit={handleSearchBox}
         />

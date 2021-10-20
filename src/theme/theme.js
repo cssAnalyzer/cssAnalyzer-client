@@ -10,6 +10,7 @@ const gaps = {
 };
 
 const fontSizes = {
+  xSmall: calcRem(SIZE.TEXT.X_SMALL),
   small: calcRem(SIZE.TEXT.SMALL),
   medium: calcRem(SIZE.TEXT.MEDIUM),
   large: calcRem(SIZE.TEXT.LARGE),

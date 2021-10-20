@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import { useSelector } from "react-redux";
+import styled, { ThemeProvider } from "styled-components";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 
@@ -13,34 +12,52 @@ import Attributes from "./pages/Attributes";
 import Compatibility from "./pages/Compatibility";
 import Color from "./pages/Color";
 import Tags from "./pages/Tags";
-import Error from "./components/Error";
+
+const PageWrapper = styled.div`
+  text-align: center;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    margin: 0;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    {
+      width: calc(100%);
+    }
+  }
+
+  @media (min-width: 280px) and (max-width: 480px) {
+    {
+      width: calc(100%);
+    }
+  }
+`;
 
 function App() {
-  const { hasError, ...error } = useSelector((state) => state.error);
-
   return (
     <DndProvider backend={HTML5Backend}>
       <ThemeProvider theme={theme}>
-        {hasError && <Error {...error} /> }
         <GlobalStyle />
-        <Menu />
-        <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
-          <Route exact path="/Attributes">
-            <Attributes />
-          </Route>
-          <Route exact path="/compatibility">
-            <Compatibility />
-          </Route>
-          <Route exact path="/Color">
-            <Color />
-          </Route>
-          <Route exact path="/Tags">
-            <Tags />
-          </Route>
-        </Switch>
+        <PageWrapper>
+          <Menu />
+          <Switch>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            <Route exact path="/attributes">
+              <Attributes />
+            </Route>
+            <Route exact path="/compatibility">
+              <Compatibility />
+            </Route>
+            <Route exact path="/color">
+              <Color />
+            </Route>
+            <Route exact path="/tags">
+              <Tags />
+            </Route>
+          </Switch>
+        </PageWrapper>
       </ThemeProvider>
     </DndProvider>
   );
