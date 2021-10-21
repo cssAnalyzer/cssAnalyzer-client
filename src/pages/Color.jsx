@@ -7,6 +7,8 @@ import getSearchResult from "../api/getSearchResult";
 import Loading from "../components/graph/Loading";
 import mockColorData from "../mockData/mockColorData";
 import ColorChip from "../components/ColorChip";
+import ExplainModal from "../components/ExplainModal";
+import EXPLANATION from "../constants/Explanation";
 
 const Wrapper = styled.div`
   display: flex;
@@ -115,14 +117,14 @@ function Color() {
 
   useEffect(() => {
     getResult(pathname, inputUrl);
-  }, [])
+  }, []);
 
   return (
     <>
       <Wrapper>
         {isLoading && <Loading />}
         <ColorChipBoard>
-          {searchResult.filteredData.map((colorCode => {
+          {searchResult.filteredData.map(colorCode => {
             return (
               <ColorChip
                 data={colorCode}
@@ -131,7 +133,7 @@ function Color() {
                 isDropped={false}
               />
             );
-          }))}
+          })}
         </ColorChipBoard>
         <PaletteSt ref={drop}>
           {userPalette.map((colorCode) => {
@@ -149,9 +151,11 @@ function Color() {
             ref={dropDelete}
           >
             Drop below color chips for delete them all :)
-          </DeleteZone>
-        }
+          </DeleteZone> }
       </Wrapper>
+      <ExplainModal
+        text={EXPLANATION.COLOR}
+      />
     </>
   );
 }

@@ -6,6 +6,8 @@ import getSearchResult from "../api/getSearchResult";
 import BubbleGraph from "../components/graph/BubbleGraph";
 import mockData from "../mockData/mockData";
 import Loading from "../components/graph/Loading";
+import ExplainModal from "../components/ExplainModal";
+import EXPLANATION from "../constants/Explanation";
 
 const Wrapper = styled.div`
   flex-direction: column;
@@ -49,6 +51,9 @@ function Tags() {
           option={pathname}
         />
       </Wrapper>
+      <ExplainModal
+        text={EXPLANATION.BUBBLE_GRAPH}
+      />
     </>
   );
 }
