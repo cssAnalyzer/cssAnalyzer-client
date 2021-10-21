@@ -6,6 +6,8 @@ import getSearchResult from "../api/getSearchResult";
 import PieGraph from "../components/graph/PieGraph";
 import mockPieData from "../mockData/mockPieData";
 import Loading from "../components/graph/Loading";
+import ExplainModal from "../components/ExplainModal";
+import EXPLANATION from "../constants/Explanation";
 
 const Wrapper = styled.div`
   flex-direction: column;
@@ -49,6 +51,9 @@ function Compatibility() {
           data={searchResult}
         />
       </Wrapper>
+      <ExplainModal
+        text={EXPLANATION.COMPAT}
+      />
     </>
   );
 }

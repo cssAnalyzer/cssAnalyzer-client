@@ -6,7 +6,7 @@ import { removeError } from "../features/errorSlice";
 
 const ErrorWrapper = styled.div`
   position: fixed;
-  margin-top: 15vh;
+  margin-top: 16vh;
   display: flex;
   flex-direction: row;
   background-color: ${({ theme }) => theme.colors.YELLOW};
@@ -18,7 +18,7 @@ const ErrorWrapper = styled.div`
 
   @media (min-width: 481px) and (max-width: 767px) {
     {
-      margin-top: 14vh;
+      margin-top: 15vh;
     }
   }
 

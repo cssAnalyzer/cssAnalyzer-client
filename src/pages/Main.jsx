@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUrl } from "../features/dataSlice";
 import SearchBox from "../components/SearchBox";
 import styled from "styled-components";
+import ExplainModal from "../components/ExplainModal";
+import EXPLANATION from "../constants/Explanation";
 
 const Wrapper = styled.div`
   display: flex;
@@ -49,6 +51,9 @@ function Main() {
         <LogoImg src="/logo.png" />
         <SearchBox
           onSubmit={handleSearchBox}
+        />
+        <ExplainModal
+          text={EXPLANATION.MAIN}
         />
       </Wrapper>
     </>
