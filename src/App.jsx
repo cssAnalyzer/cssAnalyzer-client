@@ -44,17 +44,20 @@ function App() {
             <Route exact path="/">
               <Main />
             </Route>
-            <Route exact path="/attributes">
+            <Route path="/attributes">
               <Attributes />
             </Route>
-            <Route exact path="/compatibility">
+            <Route path="/compatibility">
               <Compatibility />
             </Route>
-            <Route exact path="/color">
+            <Route path="/color">
               <Color />
             </Route>
-            <Route exact path="/tags">
+            <Route path="/tags">
               <Tags />
+            </Route>
+            <Route path="*">
+              <p>Not Found</p>
             </Route>
           </Switch>
         </PageWrapper>
