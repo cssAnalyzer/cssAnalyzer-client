@@ -132,8 +132,8 @@ function BubbleGraph({ data, title, option }) {
 
 BubbleGraph.propTypes = {
   data: PropTypes.array,
-  title: PropTypes.string,
   option: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default BubbleGraph;
