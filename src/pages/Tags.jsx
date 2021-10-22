@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 
 function Tags() {
   const { pathname } = useLocation();
-  const [searchResult, setSearchResult] = useState(mockData.filteredData);
+  const [searchResult, setSearchResult] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const inputUrl = useSelector(state => state.data.inputUrl);
 
@@ -46,13 +46,10 @@ function Tags() {
     <>
       <Wrapper>
         {isLoading && <Loading status={isLoading}/>}
-        {(searchResult?.length)
-          && (searchResult.length > 0)
-          && <BubbleGraph
-            data={searchResult}
-            option={pathname}
-          />
-        }
+        <BubbleGraph
+          data={searchResult}
+          option={pathname}
+        />
       </Wrapper>
       <ExplainModal
         text={EXPLANATION.BUBBLE_GRAPH}
