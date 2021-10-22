@@ -46,10 +46,12 @@ function Tags() {
     <>
       <Wrapper>
         {isLoading && <Loading status={isLoading}/>}
-        <BubbleGraph
-          data={searchResult}
-          option={pathname}
-        />
+        {(searchResult?.length) && searchResult.length > 0
+          && <BubbleGraph
+            data={searchResult}
+            option={pathname}
+          />
+        }
       </Wrapper>
       <ExplainModal
         text={EXPLANATION.BUBBLE_GRAPH}
