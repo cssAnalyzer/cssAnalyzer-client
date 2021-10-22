@@ -4,7 +4,7 @@ import * as d3 from "d3";
 import randomizeData from "../../helper/randomizeData";
 import propTypes from "prop-types";
 
-const Wrapper = styled.g`
+const Wrapper = styled.svg`
   position: fixed;
   width: 100%;
   height: 100%;
