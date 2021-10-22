@@ -3,14 +3,15 @@ import styled from "styled-components";
 import * as d3 from "d3";
 import PropTypes from "prop-types";
 
-const SvgWrapper = styled.g`
+const SvgWrapper = styled.svg`
   position: relative;
   text-align: center;
   width: 100%;
-  height: 65%;
+  height: 90vh;
+  border: solid pick 3px;
 `;
 
-const Text = styled.text`
+const Text = styled.svg`
   position: relative;
   justify-content: center;
   top: 12em;
@@ -19,7 +20,7 @@ const Text = styled.text`
 
 const Canvas = styled.svg`
   position: relative;
-  top: -3rem;
+  top: 5rem;
   width: 100%;
   height: 120%;
 `;
