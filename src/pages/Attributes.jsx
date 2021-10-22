@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 
 function Attributes() {
   const { pathname } = useLocation();
-  const [searchResult, setSearchResult] = useState([mockData.filteredData]);
+  const [searchResult, setSearchResult] = useState(mockData.filteredData);
   const [isLoading, setIsLoading] = useState(true);
   const inputUrl = useSelector(state => state.data.inputUrl);
 

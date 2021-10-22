@@ -46,7 +46,7 @@ function Compatibility() {
   return (
     <>
       <Wrapper>
-        {isLoading && <Loading />}
+        {isLoading && <Loading status={isLoading}/>}
         <PieGraph
           data={searchResult}
         />
