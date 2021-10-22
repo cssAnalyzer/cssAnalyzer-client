@@ -46,7 +46,7 @@ function Attributes() {
     <>
       <Wrapper>
         {isLoading && <Loading status={isLoading}/>}
-        {searchResult.length > 0
+        {(searchResult?.length) && searchResult.length > 0
           && <BubbleGraph
             data={searchResult}
             option={pathname}
