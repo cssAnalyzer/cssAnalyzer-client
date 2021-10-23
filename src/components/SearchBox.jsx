@@ -30,8 +30,8 @@ const InvisibleSubmit = styled.input`
 function SearchBox({
   onSubmit,
 }) {
-  const storedUrl = useSelector(state => state.data.inputUrl);
-  const [inputUrl, setInputUrl] = useState(storedUrl);
+  const storedUrl = useSelector(state => state.data.inputurl);
+  const [inputurl, setInputUrl] = useState(storedUrl);
 
   const handleChange = function ({ target }) {
     setInputUrl(target.value);
@@ -39,7 +39,7 @@ function SearchBox({
 
   const handleSubmitBtn = async function (event) {
     event.preventDefault();
-    await onSubmit(inputUrl);
+    await onSubmit(inputurl);
   };
 
   return (
@@ -48,7 +48,7 @@ function SearchBox({
         type="text"
         className="search"
         autoFocus="autoFocus"
-        value={inputUrl}
+        value={inputurl}
         onChange={handleChange}
       />
       <InvisibleSubmit

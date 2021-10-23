@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  inputUrl: "http://www.google.com",
+  inputurl: "http://www.google.com",
   searchResult: {},
 };
 
@@ -10,7 +10,7 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     setUrl(state, action) {
-      state.inputUrl = action.payload;
+      state.inputurl = action.payload;
     },
     setResult(state, action) {
       state.searchResult = action.payload;

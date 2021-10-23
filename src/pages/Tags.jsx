@@ -22,11 +22,11 @@ function Tags() {
   const { pathname } = useLocation();
   const [searchResult, setSearchResult] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const inputUrl = useSelector(state => state.data.inputUrl);
+  const inputurl = useSelector(state => state.data.inputurl);
 
-  async function getResult(pathname, inputUrl) {
+  async function getResult(pathname, inputurl) {
     setIsLoading(true);
-    const result = await getSearchResult(pathname, inputUrl);
+    const result = await getSearchResult(pathname, inputurl);
 
     if (!result) {
       setSearchResult(mockData.filteredData);
@@ -39,7 +39,7 @@ function Tags() {
   }
 
   useEffect(() => {
-    getResult(pathname, inputUrl);
+    getResult(pathname, inputurl);
   }, [])
 
   return (

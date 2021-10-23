@@ -23,11 +23,11 @@ function Compatibility() {
   const { pathname } = useLocation();
   const [searchResult, setSearchResult] = useState(mockPieData);
   const [isLoading, setIsLoading] = useState(true);
-  const inputUrl = useSelector(state => state.data.inputUrl);
+  const inputurl = useSelector(state => state.data.inputurl);
 
-  async function getResult(pathname, inputUrl) {
+  async function getResult(pathname, inputurl) {
     setIsLoading(true);
-    const result = await getSearchResult(pathname, inputUrl);
+    const result = await getSearchResult(pathname, inputurl);
 
     if (!result) {
       setSearchResult(mockPieData);
@@ -40,7 +40,7 @@ function Compatibility() {
   }
 
   useEffect(() => {
-    getResult(pathname, inputUrl);
+    getResult(pathname, inputurl);
   }, [])
 
   return (

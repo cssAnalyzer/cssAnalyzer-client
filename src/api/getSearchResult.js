@@ -1,8 +1,8 @@
 import instance from "./axiosInstance";
 
-async function getSearchResult(page, inputUrl) {
+async function getSearchResult(page, inputurl) {
   const res = await instance.get(page, {
-    params: { inputUrl },
+    params: { inputurl },
   });
 
   if (res) {

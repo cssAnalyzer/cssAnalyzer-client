@@ -7,6 +7,7 @@ const Chip = styled.div`
   position: relative;
   display: flex;
   width: 100px;
+  margin-top: 0.5%;
   cursor: pointer;
 
   &:hover {
