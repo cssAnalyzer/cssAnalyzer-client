@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import getSearchResult from "../api/getSearchResult";
 import BubbleGraph from "../components/graph/BubbleGraph";
-import mockData from "../mockData/mockData";
+import mockAttrData from "../mockData/mockAttrData";
 import Loading from "../components/graph/Loading";
 import ExplainModal from "../components/ExplainModal";
 import EXPLANATION from "../constants/Explanation";
@@ -20,16 +20,16 @@ const Wrapper = styled.div`
 
 function Attributes() {
   const { pathname } = useLocation();
-  const [searchResult, setSearchResult] = useState([]);
+  const [searchResult, setSearchResult] = useState(mockAttrData);
   const [isLoading, setIsLoading] = useState(true);
-  const inputUrl = useSelector(state => state.data.inputUrl);
+  const inputurl = useSelector(state => state.data.inputurl);
 
-  async function getResult(pathname, inputUrl) {
+  async function getResult(pathname, inputurl) {
     setIsLoading(true);
-    const result = await getSearchResult(pathname, inputUrl);
+    const result = await getSearchResult(pathname, inputurl);
 
     if (!result) {
-      setSearchResult(mockData.filteredData);
+      setSearchResult(mockAttrData);
       setIsLoading(false);
 
       return;
@@ -39,13 +39,13 @@ function Attributes() {
   }
 
   useEffect(() => {
-    getResult(pathname, inputUrl);
+    getResult(pathname, inputurl);
   }, [])
 
   return (
     <>
       <Wrapper>
-        {isLoading && <Loading status={isLoading}/>}
+        {isLoading && <Loading />}
         {(searchResult?.length) && searchResult.length > 0
           && <BubbleGraph
             data={searchResult}

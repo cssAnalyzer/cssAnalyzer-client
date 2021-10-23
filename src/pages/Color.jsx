@@ -76,7 +76,7 @@ function Color() {
   const { pathname } = useLocation();
   const [searchResult, setSearchResult] = useState(mockColorData);
   const [isLoading, setIsLoading] = useState(true);
-  const inputUrl = useSelector(state => state.data.inputUrl);
+  const inputurl = useSelector(state => state.data.inputurl);
   const [, drop] = useDrop(() => ({
     accept: "color",
     drop: (item) => handleDropColor(item.id),
@@ -101,9 +101,9 @@ function Color() {
     setUserPalette((userPalette) => [...userPalette, id]);
   };
 
-  async function getResult(pathname, inputUrl) {
+  async function getResult(pathname, inputurl) {
     setIsLoading(true);
-    const result = await getSearchResult(pathname, inputUrl);
+    const result = await getSearchResult(pathname, inputurl);
 
     if (!result) {
       setSearchResult(mockColorData);
@@ -116,7 +116,7 @@ function Color() {
   }
 
   useEffect(() => {
-    getResult(pathname, inputUrl);
+    getResult(pathname, inputurl);
   }, []);
 
   return (

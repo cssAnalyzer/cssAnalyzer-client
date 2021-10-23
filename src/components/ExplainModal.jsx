@@ -39,6 +39,7 @@ const Box = styled.div`
     justify-content: center;
     font-size: ${({ theme }) => theme.fontSizes.medium};
     animation-play-state: paused;
+    opacity: 1;
   }
 
   @media (min-width: 280px) and (max-width: 480px) {

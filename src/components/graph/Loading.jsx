@@ -33,7 +33,7 @@ const Text = styled.text`
   left: 35%;
 `;
 
-function Loading({ status }) {
+function Loading() {
   const svgRef = useRef();
   const svg = d3.select(svgRef.current);
 
@@ -87,7 +87,7 @@ function Loading({ status }) {
     d3.interval(() => {
       restart(nodes);
     }, 1500);
-  }, [status]);
+  }, []);
 
   return (
     <Wrapper>
@@ -95,10 +95,6 @@ function Loading({ status }) {
       <Canvas ref={svgRef} />
     </Wrapper>
   );
-}
-
-Loading.propTypes = {
-  status: propTypes.bool,
 }
 
 export default Loading;

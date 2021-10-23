@@ -37,7 +37,7 @@ const LogoImg = styled.img`
 function Main() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const inputUrl = useSelector(state => state.data.inputUrl);
+  const inputurl = useSelector(state => state.data.inputurl);
 
   const handleSearchBox = (url) => {
     dispatch(setUrl(url));
