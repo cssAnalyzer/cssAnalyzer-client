@@ -40,18 +40,16 @@ function Attributes() {
 
   useEffect(() => {
     getResult(pathname, inputurl);
-  }, [])
+  }, [pathname])
 
   return (
     <>
+      {isLoading && <Loading />}
       <Wrapper>
-        {isLoading && <Loading />}
-        {(searchResult?.length) && searchResult.length > 0
-          && <BubbleGraph
-            data={searchResult}
-            option={pathname}
-          />
-        }
+        <BubbleGraph
+          data={searchResult}
+          option={pathname}
+        />
       </Wrapper>
       <ExplainModal
         text={EXPLANATION.BUBBLE_GRAPH}

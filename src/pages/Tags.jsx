@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 function Tags() {
   const { pathname } = useLocation();
   const [searchResult, setSearchResult] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const inputurl = useSelector(state => state.data.inputurl);
 
   async function getResult(pathname, inputurl) {
@@ -40,18 +40,16 @@ function Tags() {
 
   useEffect(() => {
     getResult(pathname, inputurl);
-  }, [])
+  }, [pathname])
 
   return (
     <>
+      {isLoading && <Loading />}
       <Wrapper>
-        {isLoading && <Loading status={isLoading}/>}
-        {(searchResult?.length) && searchResult.length > 0
-          && <BubbleGraph
-            data={searchResult}
-            option={pathname}
-          />
-        }
+        <BubbleGraph
+          data={searchResult}
+          option={pathname}
+        />
       </Wrapper>
       <ExplainModal
         text={EXPLANATION.BUBBLE_GRAPH}

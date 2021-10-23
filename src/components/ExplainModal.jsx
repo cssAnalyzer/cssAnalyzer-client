@@ -18,11 +18,12 @@ const Box = styled.div`
   position: absolute;
   right: 0;
   bottom: 0;
-  line-height: 5vh;
+  justify-content: center;
+  align-items: center;
   z-index: 1;
   color: ${({ theme }) => theme.colors.WHITE};
-  width: calc(5vw);
-  height: calc(5vh);
+  width: calc(10vw);
+  height: calc(8vh);
   margin: 5vh;
   background-color: ${({ theme }) => theme.colors.PURPLE};
   font-size: ${({ theme }) => theme.fontSizes.medium};
@@ -33,13 +34,13 @@ const Box = styled.div`
     background-color: ${({ theme }) => theme.colors.WHITE};
     border: solid 3px ${({ theme }) => theme.colors.PURPLE};
     width: calc(50vw);
-    height: calc(7vh);
+    height: calc(14vh);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: ${({ theme }) => theme.fontSizes.medium};
     animation-play-state: paused;
-    opacity: 1;
+    opacity: 0;
   }
 
   @media (min-width: 280px) and (max-width: 480px) {

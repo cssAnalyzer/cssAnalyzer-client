@@ -46,7 +46,7 @@ function BubbleGraph({ data, title, option }) {
       .attr("id", d => d.name)
       .style("cursor", "pointer")
       .attr("preserveAspectRatio", "xMinYMin meet")
-      .attr("transform", "translate(" + [width / 6, height / 4] + ")")
+      .attr("transform", "translate(" + [width / 6, height / 2] + ")")
 
     const circle = node.append("circle")
       .attr("r", d => scaleRadius(d.radius))
