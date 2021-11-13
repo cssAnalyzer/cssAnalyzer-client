@@ -32,6 +32,25 @@ function PieGraph({ data, title }) {
   const svgRef = useRef();
   const svg = d3.select(svgRef.current);
 
+  const drag = () => {
+    const dragstarted = (d, event) => {
+      d3.select(this).raise().attr("stroke", "black");
+    };
+
+    const dragged = (d, event) => {
+      d3.select(this).attr("cx", d.x = event.x).attr("cy", d.y = event.y);
+    };
+
+    const dragended = (d, event) => {
+      d3.select(this).attr("stroke", null);
+    };
+
+    return d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended);
+  }
+
   useEffect(() => {
     svg.selectAll("g").remove();
 
@@ -74,6 +93,7 @@ function PieGraph({ data, title }) {
         .reverse().join("/")}\n${format(d.value)}`);
 
     svg.append("g")
+      .call(drag)
       .attr("pointer-events", "none")
       .attr("text-anchor", "middle")
       .attr("font-size", 10)

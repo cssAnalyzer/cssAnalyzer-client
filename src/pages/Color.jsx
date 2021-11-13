@@ -74,7 +74,7 @@ const DeleteZone = styled.div`
 function Color() {
   const [userPalette, setUserPalette] = useState([]);
   const { pathname } = useLocation();
-  const [searchResult, setSearchResult] = useState(mockColorData);
+  const [searchResult, setSearchResult] = useState(mockColorData.filteredData);
   const [isLoading, setIsLoading] = useState(true);
   const inputurl = useSelector(state => state.data.inputurl);
   const [, drop] = useDrop(() => ({
@@ -106,25 +106,25 @@ function Color() {
     const result = await getSearchResult(pathname, inputurl);
 
     if (!result) {
-      setSearchResult(mockColorData);
+      setSearchResult(mockColorData.filteredData);
       setIsLoading(false);
 
       return;
     }
-    setSearchResult(result);
+    setSearchResult(result.filteredData);
     setIsLoading(false);
   }
 
   useEffect(() => {
     getResult(pathname, inputurl);
-  }, []);
+  }, [pathname]);
 
   return (
     <>
+      {isLoading && <Loading />}
       <Wrapper>
-        {isLoading && <Loading />}
         <ColorChipBoard>
-          {searchResult.filteredData.map(colorCode => {
+          {searchResult.map(colorCode => {
             return (
               <ColorChip
                 data={colorCode}
@@ -136,7 +136,7 @@ function Color() {
           })}
         </ColorChipBoard>
         <PaletteSt ref={drop}>
-          {userPalette.map((colorCode) => {
+          {userPalette.map(colorCode => {
             return (
               <ColorChip
                 data={colorCode}

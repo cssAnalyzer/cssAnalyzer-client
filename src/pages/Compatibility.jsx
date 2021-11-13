@@ -45,13 +45,11 @@ function Compatibility() {
 
   return (
     <>
+      {isLoading && <Loading />}
       <Wrapper>
-        {isLoading && <Loading status={isLoading}/>}
-        {(searchResult?.length) && searchResult.length > 0
-          && <PieGraph
-            data={searchResult}
-          />
-        }
+        <PieGraph
+          data={searchResult}
+        />
       </Wrapper>
       <ExplainModal
         text={EXPLANATION.COMPAT}

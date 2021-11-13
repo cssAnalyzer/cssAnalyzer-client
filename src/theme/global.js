@@ -16,21 +16,23 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: "Megrim", cursive;
-    src: url(${FONTS.MEGRIM});
+    font-family: "Megrim-Regular", cursive;
+    src: url("../static/fonts/Megrim-Regular.eot")url("../static/fonts/Megrim-Regular.ttf");
   }
 
   @font-face {
     font-family: "Raleway", sans-serif;
-    src: url(${FONTS.RALE_WAY_LIGHT});
+    src: url("../static/fonts/Raleway-Light.eot")url("../static/fonts/Raleway-Light.ttf");
   }
 
   * {
     font-family: "Raleway", sans-serif;
+    src: url("../static/fonts/Raleway-Light.eot")url("../static/fonts/Raleway-Light.ttf");
   }
 
   button {
     font-family: "Raleway", sans-serif;
+    src: url("../static/fonts/Raleway-Light.eot")url("../static/fonts/Raleway-Light.ttf");
     cursor: pointer;
   }
 `;

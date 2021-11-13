@@ -2,44 +2,43 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import * as d3 from "d3";
 import randomizeData from "../../helper/randomizeData";
-import propTypes from "prop-types";
 
 const Wrapper = styled.svg`
+  display: flex;
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   text-align: center;
   justify-items: center;
   align-items: center;
 `;
 
 const Canvas = styled.svg`
+  display: flex;
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 50vw;
+  height: 50vh;
   text-align: center;
-  justify-items: center;
-  align-items: center;
 `;
 
 const Text = styled.text`
-  display: flex;
-  position: fixed;
+  margin-top: calc(50vh);
+  width: 50vw;
+  height: 50vh;
   font-size: ${({ theme }) => theme.fontSizes.xLarge};
   color: ${({ theme }) => theme.colors.PURPLE};
   font-family: Megrim;
   text-anchor: middle;
-  top: 50%;
-  left: 35%;
 `;
 
 function Loading() {
+  const width = Number(window.innerWidth || document.body.clientWidth);
+  const height = Number(window.innerHeight || document.body.clientHeight);
+
   const svgRef = useRef();
   const svg = d3.select(svgRef.current);
 
   const nodes = randomizeData;
-  const width = 1000;
-  const height = 800;
 
   const restart = (nodes) => {
     d3.selectAll("#group").remove();
@@ -91,7 +90,6 @@ function Loading() {
 
   return (
     <Wrapper>
-      <Text>Loading...</Text>
       <Canvas ref={svgRef} />
     </Wrapper>
   );

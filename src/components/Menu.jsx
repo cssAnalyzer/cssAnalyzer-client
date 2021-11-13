@@ -128,7 +128,7 @@ function Menu() {
               </MenuNavLink>
             );
           })}
-          {hasError && <Error {...error} /> }
+          {/* {hasError && <Error {...error} /> } */}
         </MenuBarSt>
       </>
     )

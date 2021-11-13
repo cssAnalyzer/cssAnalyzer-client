@@ -44,16 +44,16 @@ function App() {
             <Route exact path="/">
               <Main />
             </Route>
-            <Route path="/attributes">
+            <Route exact path="/attributes">
               <Attributes />
             </Route>
-            <Route path="/compatibility">
+            <Route exact path="/compatibility">
               <Compatibility />
             </Route>
-            <Route path="/color">
+            <Route exact path="/color">
               <Color />
             </Route>
-            <Route path="/tags">
+            <Route exact path="/tags">
               <Tags />
             </Route>
             <Route path="*">
