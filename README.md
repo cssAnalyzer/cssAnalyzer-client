@@ -1,8 +1,10 @@
 # cssAnalyzer-client
 
-https://user-images.githubusercontent.com/78012039/140862256-568a588f-9d32-4fc0-8ef3-9202222dc5ca.mov
 
-https://user-images.githubusercontent.com/78012039/140862866-f209c874-474b-4fa5-9177-1ad46d9f0b8b.mov 
+https://user-images.githubusercontent.com/78012039/141608821-a8768e7e-7057-4634-91f0-5b37538e45a2.mov
+
+
+https://user-images.githubusercontent.com/78012039/141608831-a9095784-b35e-4b20-b6b4-9c70b4ab340c.mov
 
 
 - CSS Analyzer는 자바스크립트로 만들어진 웹사이트 CSS 분석 서비스입니다.
@@ -10,29 +12,23 @@ https://user-images.githubusercontent.com/78012039/140862866-f209c874-474b-4fa5-
 
 
 ## 목차
-1. 프로젝트 동기
-2. 기술 스택
-<details markdown="1">
-<summary>3. 스택 선택시 고려 사항</summary>
+1. [프로젝트 동기](https://github.com/cssAnalyzer/cssAnalyzer-client/edit/dev/README.md#:~:text=%EC%86%8C%EA%B0%90-,%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%8F%99%EA%B8%B0,-%EC%A7%80%EB%82%9C%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C)
+2. [기술 스택](https://github.com/cssAnalyzer/cssAnalyzer-client/edit/dev/README.md#:~:text=%EC%82%AC%EC%9D%B4%ED%8A%B8%EB%A5%BC%20%EB%A7%8C%EB%93%A4%EA%B3%A0%20%EC%8B%B6%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4.-,%EA%B8%B0%EC%88%A0%20%EC%8A%A4%ED%83%9D,-Client%20Side)
+3. [스택 선택시 고려 사항](https://github.com/cssAnalyzer/cssAnalyzer-client/edit/dev/README.md#:~:text=d3.js-,%EC%8A%A4%ED%83%9D%20%EC%84%A0%ED%83%9D%EC%8B%9C%20%EA%B3%A0%EB%A0%A4%20%EC%82%AC%ED%95%AD,-React-persist)
+   - React
+   - Reduxjs/toolkit
+   - React-persist
+   - React-dnd
+   - XPath
+   - d3
 
-- React
-- Reduxjs/toolkit
-- React-persist
-- React-dnd
-- XPath
-- d3
+4. [작업시 고려 사항](https://github.com/cssAnalyzer/cssAnalyzer-client/edit/dev/README.md#:~:text=%EC%9E%88%EB%8B%A4%EB%8A%94%20%EA%B2%83%EC%9D%B4%20%EB%A7%A4%EB%A0%A5%EC%A0%81%EC%9D%B4%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4.-,%EC%9E%91%EC%97%85%EC%8B%9C%20%EA%B3%A0%EB%A0%A4%20%EC%82%AC%ED%95%AD,-Property%20%EC%A0%95%EB%B3%B4%EB%A5%BC%20%EA%B0%80%EC%A0%B8%EC%98%A4%EB%8A%94)
+   - React 와 d3 간의 랜더링 주도권 설정
+   - Puppeteer 응답 속도 높이기
 
-</details>
+5. [아쉬운 점](https://github.com/cssAnalyzer/cssAnalyzer-client/edit/dev/README.md#:~:text=%EC%88%98%20%EC%9E%88%EB%8F%84%EB%A1%9D%20%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.-,%EC%95%84%EC%89%AC%EC%9A%B4%20%EC%A0%90,-%EC%86%8C%EA%B0%90)
 
-<details markdown="1">
-<summary>4. 작업시 고려 사항</summary>
-
- - React 와 d3 간의 랜더링 주도권 설정
- - Puppeteer 응답 속도 높이기
-
-</details>
-
-5. 소감 
+6. [소감](https://github.com/cssAnalyzer/cssAnalyzer-client/edit/dev/README.md#:~:text=%EC%95%84%EC%89%AC%EC%9A%B4%20%EC%A0%90-,%EC%86%8C%EA%B0%90,-%ED%8C%80%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%A5%BC%20%ED%95%A0)
 
 
 ## 프로젝트 동기
@@ -73,9 +69,14 @@ https://user-images.githubusercontent.com/78012039/140862866-f209c874-474b-4fa5-
    - 사용자가 입력한 url에 get 요청으로 CSS file 만을 요청해서 받는 방법이 가장 빠른 응답 속도를 갖고 있었습니다. 그러나 검색 결과의 정확도를 위해서는 computedCSS property가 필요했고, 해당 속성은 CSS file만으로는 확인할 수 없었습니다. 또한 CSS 를 사용하지 않고 React나 Vue 등과 같은 framework를 사용하는 홈페이지의 url이 검색어로 들어왔을 경우를 처리할 수 없어지기 때문에 로직의 안전성을 위해 해당 페이지의 모든 요소의 property 정보를 가져오는 것으로 로직을 수정했습니다.
  - Puppeteer 응답 속도 높이기 
    - 모든 요소의 property 정보를 루프를 돌며 가져오자, 로직에서 처리한 데이터의 정확도는 상승했으나 그와 비례하여 응답 속도는 느려졌습니다. 이에 다음 조치를 통해 응답 속도를 33% 감소할 수 있었습니다.
-     - Page의 성격에 따라 Puppeteer 에 다른 option을 넣어 총 크롤링 시간을 줄였습니다. 예를 들어 태그 데이터는 html에서 가져와야하기 때문에, css가 모두 랜더링될 때까지 퍼페티어가 대기할 필요가 없었습니다. 따라서 요청을 보내는 페이지에 따라 다음 단계로 시간을 단축하고 바로 넘어갈 수 있는 옵션을 적용했습니다.
+      - Page의 성격에 따라 Puppeteer 에 다른 option을 넣어 총 크롤링 시간을 줄였습니다. 예를 들어 태그 데이터는 html에서 가져와야하기 때문에, css가 모두 랜더링될 때까지 퍼페티어가 대기할 필요가 없었습니다. 따라서 요청을 보내는 페이지에 따라 다음 단계로 시간을 단축하고 바로 넘어갈 수 있는 옵션을 적용했습니다.
    - mdn-compat-data.js 라이브러리를 사용, 8가지 종류의 브라우저에서 어떤 속성이 어떤 버전부터 지원되었는지 별도의 요청없이 분류할 수 있도록 했습니다.
  
+## 아쉬운 점
+  - 더 정열된 로직 작성
+    - 리액트와 d3, 둘 중 누구에게 랜더링 주도권을 주어야하나에 고민을 했습니다. 보글거리는 개별 데이터의 움직임을 위해서는 어차피 d3의 물리기반 함수들을 사용해야하며, 동적생성의 키라고 볼 수 있는 검색결과 응답이 한꺼번에 d3에 들어가야 그 안에서 순회를 돌며 각 요소를 동적으로 생성한다는 것을 알고 d3가 주로 랜더링을 하게 만들었습니다. 그러다보니 리액트는 상태 변화에 따른 랜더링 여부와 라우터 동작을 포함한 기본 기능 밖에 담당하지 못했습니다. 만일 리액트와 d3를 조화롭게 썼다면 d3 로직의 끊임없는 체이닝을 개별 데이터 svg 단위로 끊어 좀 더 깔끔한 로직 생성이 가능했을 것입니다.
+  - 배포
+    - 로컬에서는 쌩쌩 잘 돌아가는 프로젝트가 AWS에 배포하자 전혀 돌아가지 않았습니다. nginx에 구성 요소 중 puppeteer 를 위한 chromium이 없기 때문이었습니다. 하지만 배포 환경에 nginx를 깔아도 로직은 빈 객체만 계속 뱉어냈습니다. puppeteer와 chromium 외에 배포환경의 무엇이 다르기에 빈 객체만 나오는지 지금까지도 알 수 없습니다. 그러나 배포는 언제나 예상치 못한 일이 생기기 때문에 배포 이후를 대응할 시간 역시 여유롭게 잡아야한다는 것을 인지했습니다.
 
 ## 소감
 - 팀 프로젝트를 할 때는 팀원들과 으쌰으쌰하는 분위기에 적절한 텐션이 유지될 수 있었는데, 개인 프로젝트를 진행하다보니 에러와 씨름을 하거나 라이브러리에 대해 공부한 날(= 작성한 코드가 적은 날)에는 과거의 제가 작성한 계획에 끌려가는 느낌이 들었습니다. 또한, 팀 프로젝트에서 함께 스터디하고 설계했던 내용들이 이번 프로젝트에서의 좀 더 깔끔한 로직 작성에 기여한 것을 알 수 있었습니다. (ex. app 최상단에서 에러 컴포넌트 사용하면서 리덕스로 에러 관리하기) 이 자리를 빌어 팀원분들 감사합니다.
